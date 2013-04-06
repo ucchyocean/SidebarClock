@@ -1,0 +1,6 @@
+name: ColorTeaming
+main: com.github.ucchyocean.sc.SidebarClock
+version: 1.0.0
+authors: [ucchy]
+load: startup
+description: Sidebar clock
