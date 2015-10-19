@@ -6,6 +6,7 @@
 package com.github.ucchyocean.sc;
 
 import java.util.Map;
+import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -96,5 +97,10 @@ public class SidebarItem implements OfflinePlayer {
 
     @Deprecated
     public void setWhitelisted(boolean arg0) {
+    }
+
+    @Deprecated
+    public UUID getUniqueId() {
+        return null;
     }
 }

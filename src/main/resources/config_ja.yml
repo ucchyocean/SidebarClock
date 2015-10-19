@@ -1,0 +1,18 @@
+# ${project.name} v${project.version}
+# @author     ucchy
+# @license    LGPLv3
+# @copyright  Copyright ucchy 2015
+
+
+# サイドバーのタイトル部分のフォーマット。指定できる文字列の説明は、こちらを参照ください。
+# http://dodododo.jp/java/javase_6_docs_ja/api/java/text/SimpleDateFormat.html
+titleFormat: 'M月d日(E)'
+
+# サイドバーの項目部分のフォーマット。
+itemFormat: 'HH:mm:'
+
+# 表示時刻のタイムゾーン。指定できる文字列の一覧は、こちらなどを参照ください。
+# http://lab.hidetake.org/util/timezones
+# 例えば、ロンドン時間を設定したい場合は、
+# timezone: 'Europe/London' と指定してください。
+timezone: 'Asia/Tokyo'

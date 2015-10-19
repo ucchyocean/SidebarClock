@@ -8,10 +8,9 @@ package com.github.ucchyocean.sc;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
@@ -20,16 +19,12 @@ import org.bukkit.scoreboard.Scoreboard;
  * @author ucchy
  * サイドバー表示をするためのAPIクラス
  */
-public class SidebarDisplay implements Runnable {
-
-    private static final String FORMAT_DATE = "M月d日(E)";
-    private static final String FORMAT_HM = "HH:mm:";
+public class SidebarDisplay extends BukkitRunnable {
 
     private SimpleDateFormat fDate;
     private SimpleDateFormat fHM;
     private Calendar calendar;
 
-    private Server server;
     private Scoreboard scoreboard;
     private Objective objective;
     private SidebarItem item;
@@ -37,13 +32,12 @@ public class SidebarDisplay implements Runnable {
     /**
      * コンストラクタ。
      */
-    public SidebarDisplay(Server server) {
+    public SidebarDisplay(SidebarClock plugin) {
 
-        fDate = new SimpleDateFormat(FORMAT_DATE);
-        fHM = new SimpleDateFormat(FORMAT_HM);
-        calendar = Calendar.getInstance(TimeZone.getDefault());
-        this.server = server;
-
+        this.fDate = new SimpleDateFormat(plugin.getClockConfig().getTitleFormat());
+        this.fHM = new SimpleDateFormat(plugin.getClockConfig().getItemFormat());
+        this.calendar = Calendar.getInstance(plugin.getClockConfig().getTimezone());
+        this.scoreboard = plugin.getServer().getScoreboardManager().getMainScoreboard();
     }
 
     /**
@@ -51,13 +45,6 @@ public class SidebarDisplay implements Runnable {
      */
     public void init() {
 
-        if ( server.getScoreboardManager() == null ) {
-            return;
-        } else if ( server.getScoreboardManager().getMainScoreboard() == null ) {
-            return;
-        }
-
-        scoreboard = server.getScoreboardManager().getMainScoreboard();
         if ( scoreboard.getObjective("clock") != null ) {
             scoreboard.getObjective("clock").unregister();
         }
@@ -82,6 +69,7 @@ public class SidebarDisplay implements Runnable {
     /**
      * サイドバーに時刻を表示する
      */
+    @SuppressWarnings("deprecation")
     private void setTime() {
 
         Date date = new Date();

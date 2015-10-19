@@ -1,5 +1,19 @@
 name: SidebarClock
 main: com.github.ucchyocean.sc.SidebarClock
-version: 1.0.1
+version: 1.0.2
 authors: [ucchy]
 description: Sidebar clock
+
+commands:
+  sidebarclock:
+    description: The command for SidebarClock.
+    aliases: [sc,clock]
+    usage: |
+           /<command> reload - reload configuration file.
+    permission: sidebarclock.command
+    permission-message: You don't have "<permission>" permission.
+
+permissions:
+  sidebarclock.command:
+    description: SidebarClock command permission.
+    default: op
