@@ -1,6 +1,6 @@
-name: SidebarClock
+name: ${project.name}
 main: com.github.ucchyocean.sc.SidebarClock
-version: 1.0.2
+version: ${project.version}
 authors: [ucchy]
 description: Sidebar clock
 

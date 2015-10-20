@@ -5,7 +5,7 @@
 
 
 # サイドバーのタイトル部分のフォーマット。指定できる文字列の説明は、こちらを参照ください。
-# http://dodododo.jp/java/javase_6_docs_ja/api/java/text/SimpleDateFormat.html
+# http://docs.oracle.com/javase/jp/6/api/java/text/SimpleDateFormat.html
 titleFormat: 'M月d日(E)'
 
 # サイドバーの項目部分のフォーマット。

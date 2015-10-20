@@ -35,8 +35,10 @@ public class SidebarDisplay extends BukkitRunnable {
     public SidebarDisplay(SidebarClock plugin) {
 
         this.fDate = new SimpleDateFormat(plugin.getClockConfig().getTitleFormat());
+        this.fDate.setTimeZone(plugin.getClockConfig().getTimezone());
         this.fHM = new SimpleDateFormat(plugin.getClockConfig().getItemFormat());
-        this.calendar = Calendar.getInstance(plugin.getClockConfig().getTimezone());
+        this.fHM.setTimeZone(plugin.getClockConfig().getTimezone());
+        this.calendar = Calendar.getInstance();
         this.scoreboard = plugin.getServer().getScoreboardManager().getMainScoreboard();
     }
 
