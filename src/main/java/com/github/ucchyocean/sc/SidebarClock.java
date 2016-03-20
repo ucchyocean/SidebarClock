@@ -7,9 +7,11 @@ package com.github.ucchyocean.sc;
 
 import java.io.File;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.DisplaySlot;
 
 /**
  * @author ucchy
@@ -31,6 +33,19 @@ public class SidebarClock extends JavaPlugin {
 
         display = new SidebarDisplay(this);
         display.runTaskTimer(this, 20, 20);
+    }
+
+    /**
+     * @see org.bukkit.plugin.java.JavaPlugin#onDisable()
+     */
+    @Override
+    public void onDisable() {
+
+        // タスクの停止
+        display.cancel();
+
+        // サイドバーの登録解除
+        Bukkit.getScoreboardManager().getMainScoreboard().clearSlot(DisplaySlot.SIDEBAR);
     }
 
     /**

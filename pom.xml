@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.ucchyocean</groupId>
   <artifactId>SidebarClock</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
 
   <build>
     <finalName>${project.artifactId}</finalName>
@@ -43,6 +43,14 @@
     </plugins>
   </build>
 
+  <distributionManagement>
+    <repository>
+      <id>internal.repo</id>
+      <name>Temporary Staging Repository</name>
+      <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+  </distributionManagement>
+
   <repositories>
     <repository>
       <id>bukkit-repo</id>
@@ -60,7 +68,7 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>craftbukkit</artifactId>
-      <version>1.8.8-R0.1-SNAPSHOT</version>
+      <version>1.9-R0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
